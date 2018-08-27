@@ -1,0 +1,318 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>log in screen</title>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <link rel='stylesheet' href='login_userInfo_childInfo.css'>
+</head>
+
+<body>
+    <!-- <div id="message">Signed in as:
+        <p id="status"></p>
+    </div> -->
+
+    <div class="container">
+
+        <div class="logon-container">
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card info-heading">
+                        <div class="card-header text-center">
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-8 text-center">
+                                    <div class="child-info-title text-center">Child Sign In.</div>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <!-- <button id="logout">Logout</button> -->
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="card-body">
+                            <div class="app-title text-center">Day Care Sign-in</div>
+                            <div class="app-instructions text-center">Sign in below to continue:</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-sm-5 text-center">
+                    <div class="card card-left">
+                        <div class="card-header">
+                            <h4 class="card-title existing-user-title">Existing User,</h4>
+                            <h4 class="card-title existing-user-title">Sign-in here.</h4>
+                        </div>
+                        <div class="card-body">
+                            <div class="input-area">
+                                <label for="loginEmail">Email: </label>
+                                <input id="loginEmail" type="text" placeholder="Enter you email">
+                            </div>
+                            <div class="input-area">
+                                <label for="loginPassword">Password: </label>
+                                <input id="loginPassword" type="text" placeholder="Enter your password">
+                            </div>
+                            <div class="button-area">
+                                <button id="login">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-7 text-center">
+                    <div class="card card-left">
+                        <div class="card-header">
+                            <h4 class="card-title existing-user-title">New User,</h4>
+                            <h4 class="card-title existing-user-title">Sign-up here.</h4>
+                        </div>
+                        <div class="card-body">
+                            <!-- <div class="input-area">
+                                <label for="child1-first">Child's First Name: </label>
+                                <input id="child1-first" type="text" placeholder="Enter child's first name">
+                            </div> -->
+                            <!-- <div class="input-area">
+                                <label for="parent-1-first">Parent's First Name: </label>
+                                <input id="parent-1-first" type="text" placeholder="Enter parent's first name">
+                            </div> -->
+                            <!-- <div class="input-area">
+                                <label for="parent-1-last">Parent's Last Name: </label>
+                                <input id="parent-1-last" type="text" placeholder="Enter parent's last name">
+                            </div> -->
+                            <div class="input-area">
+                                <label for="parent-1-email">Parent's Email: </label>
+                                <input id="parent-1-email" type="email" placeholder="Enter your email">
+                            </div>
+                            <div class="input-area">
+                                <label for="password">Create Password: </label>
+                                <input id="password" type="password" placeholder="Enter a password">
+                            </div>
+                            <div class="button-area">
+                                <button id="submit-signup" type="submit">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- information container  -->
+
+        <div class="info-container">
+            <div> sign up information</div>
+            <div><button id="logout">Logout</button></div>
+            <!-- child info  -->
+            <div id="open-child-info">Enter Child's Infomation Here</div>
+            <div id="child-input-area">
+                <input id="child-1-first" type="text" placeholder="Enter child's first name">
+                <input id="child-1-last" type="text" placeholder="Enter child's last name">
+                <input id="child-1-age" type="text" placeholder="Enter child's age">
+                <!-- <input id="child-1-grade" type="text" placeholder="Enter child's grade"> -->
+                <select name="grade" id="child-1-grade">
+                    <option value="nursery">Nursery (0-23months)</option>
+                    <option value="2yoa">2 year olds</option>
+                    <option value="3yoa">3 year olds</option>
+                    <option value="4yoa">4year olds</option>
+                    <option value="5yoa">5 year olds</option>
+                </select>
+                <input id="child-1-warning" type="text" placeholder="Enter warning information">
+                <input id="child-1-additional" type="text" placeholder="Enter additional information">
+                <br>
+                <button id="submit-child">Submit Info.</button>
+                <span id="close-child">X</span>
+            </div>
+
+            <br>
+            <hr>
+            <!-- parent 1 info  -->
+            <div id="open-parent1-info">Enter Parent 1's Information Here</div>
+            <div id="parent1-input-area">
+
+                <input id="parent-1-first" type="text" placeholder="Enter your first name">
+                <input id="parent-1-last" type="text" placeholder="Enter your last name">
+                <input id="parent-1-cell" type="text" placeholder="Enter your cell number">
+                <div id="parent-1-email"></div>
+                <!-- <input id="parent-1-email" type="text" placeholder="Enter your email"> -->
+                <br>
+                <button id="submit-parent1">Submit Info.</button>
+                <span id="close-parent1">X</span>
+            </div>
+
+            <br>
+            <hr>
+            <!-- parent 2 info -->
+            <div id="open-parent2-info">Enter Parent 2's Information Here</div>
+            <div id="parent2-input-area">
+                <input id="parent-2-first" type="text" placeholder="Enter your first name">
+                <input id="parent-2-last" type="text" placeholder="Enter your last name">
+                <input id="parent-2-cell" type="text" placeholder="Enter your cell number">
+                <input id="parent-2-email" type="text" placeholder="Enter your email">
+                <br>
+                <button id="submit-parent2">Submit Info.</button>
+                <span id="close-parent2">X</span>
+            </div>
+
+            <br>
+            <hr>
+
+            <button id="continue">Continue</button>
+            <br>
+            <br>
+            <!-- <div id="message">message goes here</div>
+                    <div class="put-here"></div> -->
+        </div>
+
+        <!-- child information container  -->
+
+        <div class="child-info-container container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card info-heading">
+                        <div class="card-header text-center">
+                            <div class="row">
+                                <div class="col-sm-2"></div>
+                                <div class="col-sm-8 text-center">
+                                    <div class="child-info-title text-center">Child Information Page</div>
+                                </div>
+                                <div class="col-sm-2 text-right">
+                                    <button id="logout">Logout</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="child-name text-center">Welcome: <span class="child1-first"></span></div>
+                            <div class="grade-info text-center"><span class="child1-first"></span> is in the <span id="child1-grade"></span>
+                                .</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-2 text-center">
+
+                    <div class="card card-image">
+                        <div class="card-header"><span class="child1-first"></span>'s picture.</div>
+                        <div class="card-body text-center"></div>
+                        <img class="card-img-top text-center" id="child1-image" src="" alt="child1 pic" style="width: 90%">
+                    </div>
+                </div>
+
+                <div class="col-sm-6 text-center">
+
+                    <div class="card card-top">
+                        <div class="card-header">
+                            <h4 class="card-title child-header">Warning!</h4>
+                            <ul class="child-warning-title"><span class="child1-first"></span> has difficulty with the following:
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <li id="child1-warning"></li>
+                        </div>
+                    </div>
+
+                    <div class="card  card-bottom">
+                        <div class="card-header">
+                            <h4 class="card-title child-header">Additional Info.</h4>
+                            <ul class="child-warning-title text-center"><span class="child1-first"></span> wants you to know:
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <li id="child1-comments"></li>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-sm-4 text-center">
+                    <div class="card card-parent">
+                        <div class="card-header">
+                            <h4 class="card-title child-header"><span class="child1-first"></span>'s Parents</h4>
+                            <!-- <ul class="child-warning-title"><span class="child1-first"></span> has difficulty with the following: </ul> -->
+                        </div>
+                        <div class="card-body text-center">
+                            <ul>
+                                <li class="parent" id="parent-1" data-toggle="modal" data-target="#parent1-info-area"></li>
+                                <li class="parent" id="parent-2" data-toggle="modal" data-target="#parent2-info-area"></li>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="child-info"></div>
+
+
+        </div>
+
+    </div>
+
+
+    <!-- Modal 1 -->
+    <div class="modal fade" id="parent1-info-area" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title" id="parent1-name">Parent 1</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>Cell Number: <span id="parent1-cell"></span></div>
+                    <div>Email: <span id="parent1-email"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal fade" id="parent2-info-area" tabindex="-1" role="dialog" aria-labelledby="exampleModa2Label" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="modal-title" id="parent2-name">Parent 2</div>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div>Cell Number: <span id="parent2-cell"></span></div>
+                    <div>Email: <span id="parent2-email"></span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+    <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js'></script>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script type='text/javascript' src='login_userInfo_childInfo.js'></script>
+    <!-- <script type='text/javascript' src='signIn.js'></script>
+                <script type='text/javascript' src='userInfo.js'></script>
+                <script type='text/javascript' src='childInfo.js'></script> -->
+</body>
+
+</html>
